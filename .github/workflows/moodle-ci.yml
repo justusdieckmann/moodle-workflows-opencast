@@ -4,7 +4,7 @@ name: Moodle Plugin CI
 # Runs the Moodle Plugin CI workflow.
 #
 # Additional plugins may be required for this workflow to run, configurable with the inputs of this workflow
-# the used branch included.
+# the used branch included. If no branch is specified for a required plugin, the current branch is used.
 ########################################################################################################################
 
 on:
@@ -35,8 +35,8 @@ on:
 
 env:
   workflow_branch_name: ${{ github.head_ref || github.ref_name }}
-  branch_tool_plugin: ${{ inputs.branch-tool-plugin || 'master' }}
-  branch_mod_plugin: ${{ inputs.branch-mod-plugin || 'master' }}
+  branch_tool_plugin: ${{ inputs.branch-tool-plugin || env.workflow_branch_name }}
+  branch_mod_plugin: ${{ inputs.branch-mod-plugin || env.workflow_branch_name }}
 
 ########################################################################################################################
 
@@ -233,11 +233,11 @@ jobs:
 
       - name: Install tool plugin
         if: ${{ inputs.requires-tool-plugin == true }}
-        run: moodle-plugin-ci add-plugin --branch "$branch_tool_plugin" Opencast-Moodle/moodle-tool_opencast
+        run: moodle-plugin-ci add-plugin --branch "${branch_tool_plugin}" Opencast-Moodle/moodle-tool_opencast
 
       - name: Install activity plugin
         if: ${{ inputs.requires-mod-plugin == true }}
-        run: moodle-plugin-ci add-plugin --branch "$branch_mod_plugin" Opencast-Moodle/moodle-mod_opencast
+        run: moodle-plugin-ci add-plugin --branch "${branch_mod_plugin}" Opencast-Moodle/moodle-mod_opencast
 
       - name: Install moodle-plugin-ci
         run: |
