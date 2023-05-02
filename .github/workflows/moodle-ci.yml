@@ -17,7 +17,7 @@ on:
         type: boolean
       branch-tool-plugin:
         description: 'Specifies the branch of the Opencast Tool plugin.'
-        default: ""
+        default: ''
         required: false
         type: string
       requires-mod-plugin:
@@ -27,7 +27,7 @@ on:
         type: boolean
       branch-mod-plugin:
         description: 'Specifies the branch of the Opencast Activity plugin.'
-        default: ""
+        default: ''
         required: false
         type: string
 
