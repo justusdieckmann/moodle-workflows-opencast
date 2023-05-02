@@ -97,11 +97,14 @@ jobs:
 
       - name: Install tool plugin
         if: ${{ inputs.requires-tool-plugin == true }}
-        run: moodle-plugin-ci add-plugin --branch master Opencast-Moodle/moodle-tool_opencast
+        run: moodle-plugin-ci add-plugin --branch "${branch_tool_plugin}" Opencast-Moodle/moodle-tool_opencast
+
+      - name: Install activity plugin
+        if: ${{ inputs.requires-mod-plugin == true }}
+        run: moodle-plugin-ci add-plugin --branch "${branch_mod_plugin}" Opencast-Moodle/moodle-mod_opencast
 
       - name: Install moodle-plugin-ci
-        run: |
-          moodle-plugin-ci install --plugin ./plugin --db-host=127.0.0.1 --no-init
+        run: moodle-plugin-ci install --plugin ./plugin --db-host=127.0.0.1 --no-init
         env:
           DB: ${{ matrix.database }}
           MOODLE_BRANCH: ${{ matrix.moodle-branch }}
