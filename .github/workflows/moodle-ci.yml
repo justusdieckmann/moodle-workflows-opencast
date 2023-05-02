@@ -35,6 +35,8 @@ on:
 
 env:
   workflow_branch_name: ${{ github.head_ref || github.ref_name }}
+  branch_tool_plugin: ${{ inputs.branch-tool-plugin || (github.head_ref || github.ref_name) }}
+  branch_mod_plugin: ${{ inputs.branch-mod-plugin || (github.head_ref || github.ref_name) }}
 
 ########################################################################################################################
 
@@ -148,9 +150,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: static
     name: test (${{matrix.moodle-branch}}/${{matrix.php}}/${{matrix.database}})
-    env:
-      branch_tool_plugin: ${{ inputs.branch-tool-plugin || env.workflow_branch_name }}
-      branch_mod_plugin: ${{ inputs.branch-mod-plugin || env.workflow_branch_name }}
 
     strategy:
       fail-fast: false
