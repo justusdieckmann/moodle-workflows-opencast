@@ -215,7 +215,7 @@ jobs:
 
       - name: Install activity plugin
         if: ${{ inputs.requires-mod-plugin == true }}
-        run: moodle-plugin-ci add-plugin --branch main Opencast-Moodle/moodle-mod_opencast
+        run: moodle-plugin-ci add-plugin --branch master Opencast-Moodle/moodle-mod_opencast
 
       - name: Install moodle-plugin-ci
         run: |
