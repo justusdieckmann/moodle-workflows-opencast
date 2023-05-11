@@ -75,17 +75,17 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-composer-static-${{ matrix.php }}-${{ matrix.moodle-branch }}-${{ matrix.database }}-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            ${{ runner.os }}-composer-
+            ${{ runner.os }}-composer-static-${{ matrix.php }}-${{ matrix.moodle-branch }}-${{ matrix.database }}-${{ hashFiles('**/composer.lock') }}
 
       - name: npm cache
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-static-${{ matrix.php }}-${{ matrix.moodle-branch }}-${{ matrix.database }}${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-node-static-${{ matrix.php }}-${{ matrix.moodle-branch }}-${{ matrix.database }}${{ hashFiles('**/package-lock.json') }}
 
       - name: Initialise moodle-plugin-ci
         run: |
@@ -214,17 +214,17 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-composer-test-${{ matrix.php }}-${{ matrix.moodle-branch }}-${{ matrix.database }}-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            ${{ runner.os }}-composer-
+            ${{ runner.os }}-composer-test-${{ matrix.php }}-${{ matrix.moodle-branch }}-${{ matrix.database }}-${{ hashFiles('**/composer.lock') }}
 
       - name: npm cache
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-test-${{ matrix.php }}-${{ matrix.moodle-branch }}-${{ matrix.database }}${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-node-test-${{ matrix.php }}-${{ matrix.moodle-branch }}-${{ matrix.database }}${{ hashFiles('**/package-lock.json') }}
 
       - name: Initialise moodle-plugin-ci
         run: |
