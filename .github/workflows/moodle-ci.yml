@@ -246,10 +246,10 @@ jobs:
 
       - name: Install moodle-plugin-ci
         run: |
+          moodle-plugin-ci add-config '$CFG->is_moodle_plugin_ci = true;'
           moodle-plugin-ci install --plugin ./plugin --db-host=127.0.0.1
           # Set behat timeout (is multiplied with 10 seconds).
           moodle-plugin-ci add-config '$CFG->behat_increasetimeout = 6;'
-          moodle-plugin-ci add-config '$CFG->is_moodle_plugin_ci = true;'
         env:
           DB: ${{ matrix.database }}
           MOODLE_BRANCH: ${{ matrix.moodle-branch }}
