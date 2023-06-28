@@ -37,6 +37,7 @@ env:
   workflow_branch_name: ${{ github.head_ref || github.ref_name }}
   branch_tool_plugin: ${{ inputs.branch-tool-plugin || (github.head_ref || github.ref_name) }}
   branch_mod_plugin: ${{ inputs.branch-mod-plugin || (github.head_ref || github.ref_name) }}
+  is_moodle_plugin_ci_workflow: 1
 
 ########################################################################################################################
 
@@ -205,7 +206,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          ini-values: max_input_vars=5000, opencast_moodle.is_moodle_plugin_ci_system=True
+          ini-values: max_input_vars=5000
           coverage: none
 
       - name: Get composer cache directory
