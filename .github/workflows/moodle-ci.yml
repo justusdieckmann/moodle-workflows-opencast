@@ -200,7 +200,7 @@ jobs:
         run: |
           opencast_docker_compose_yml='opencast-docker/docker-compose/docker-compose.allinone.h2.yml'
           default_config_part='ELASTICSEARCH_SERVER_HOST: opensearch'
-          config_part='ELASTICSEARCH_SERVER_HOST: opensearch\n\t\t\tEXTRA_JAVA_OPTS: "-Djdk.util.zip.disableZip64ExtraFieldValidation=true"'
+          config_part='ELASTICSEARCH_SERVER_HOST: opensearch\n      EXTRA_JAVA_OPTS: "-Djdk.util.zip.disableZip64ExtraFieldValidation=true"'
           sed -i "s/${default_config_part}/${config_part}/" "${opencast_docker_compose_yml}"
 
       - name: Start Opencast
