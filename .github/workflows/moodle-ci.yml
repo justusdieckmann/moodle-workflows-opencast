@@ -48,9 +48,9 @@ jobs:
 
     strategy:
       matrix:
-        php: ['8.1']
-        moodle-branch: ['MOODLE_402_STABLE']
-        database: ['mariadb']
+        php: ['8.2']
+        moodle-branch: ['MOODLE_403_STABLE']
+        database: ['pgsql']
 
     steps:
       - name: Start MariaDB
@@ -160,25 +160,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ['7.4', '8.0', '8.1']
-        moodle-branch: ['MOODLE_39_STABLE', 'MOODLE_310_STABLE', 'MOODLE_311_STABLE', 'MOODLE_400_STABLE', 'MOODLE_401_STABLE', 'MOODLE_402_STABLE']
+        php: ['8.0', '8.1', '8.2']
+        moodle-branch: ['MOODLE_401_STABLE', 'MOODLE_402_STABLE', 'MOODLE_403_STABLE']
         database: ['mariadb', 'pgsql']
         opencast: ['13.5']
         exclude:
-          - moodle-branch: 'MOODLE_39_STABLE'
-            php: '8.0'
-          - moodle-branch: 'MOODLE_39_STABLE'
-            php: '8.1'
-          - moodle-branch: 'MOODLE_310_STABLE'
-            php: '8.0'
-          - moodle-branch: 'MOODLE_310_STABLE'
-            php: '8.1'
-          - moodle-branch: 'MOODLE_311_STABLE'
-            php: '8.1'
-          - moodle-branch: 'MOODLE_400_STABLE'
-            php: '8.1'
-          - moodle-branch: 'MOODLE_402_STABLE'
-            php: '7.4'
+          - php: '8.2'
+            moodle-branch: 'MOODLE_401_STABLE'
+        include:
+          - php: '7.4'
+            moodle-branch: 'MOODLE_39_STABLE'
 
     steps:
       - name: Start MariaDB
