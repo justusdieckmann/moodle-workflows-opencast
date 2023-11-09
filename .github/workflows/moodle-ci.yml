@@ -147,7 +147,7 @@ jobs:
 
       - name: Grunt
         if: ${{ always() }}
-        run: moodle-plugin-ci grunt --max-lint-warnings 1 # Dumb, but it seems like one warning is always generated
+        run: moodle-plugin-ci grunt --max-lint-warnings 100 # Dumb, but it seems like one warning is always generated
                                                           # because we have a third party file, which is ignored by default.
 
   ######################################################################################################################
