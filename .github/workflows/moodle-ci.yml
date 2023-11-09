@@ -50,7 +50,7 @@ jobs:
       matrix:
         php: ['8.2']
         moodle-branch: ['MOODLE_403_STABLE']
-        database: ['pgsql']
+        database: ['mariadb']
 
     steps:
       - name: Start MariaDB
