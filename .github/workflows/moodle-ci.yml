@@ -167,7 +167,9 @@ jobs:
         exclude:
           - php: '8.2'
             moodle-branch: 'MOODLE_401_STABLE'
-         
+          - php: '8.0'
+            moodle-branch: 'main'
+     
     steps:
       - name: Start MariaDB
         if: matrix.database == 'mariadb'
