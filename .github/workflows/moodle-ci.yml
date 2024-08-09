@@ -73,7 +73,7 @@ jobs:
         run: echo "dir=$(cd /home/runner/.composer && composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Composer cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-static-${{ matrix.php }}-${{ matrix.moodle-branch }}-${{ matrix.database }}-${{ hashFiles('**/composer.lock') }}
@@ -81,7 +81,7 @@ jobs:
             ${{ runner.os }}-composer-static-${{ matrix.php }}-${{ matrix.moodle-branch }}-${{ matrix.database }}-${{ hashFiles('**/composer.lock') }}
 
       - name: npm cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-static-${{ matrix.php }}-${{ matrix.moodle-branch }}-${{ matrix.database }}-${{ hashFiles('**/package-lock.json') }}
@@ -219,7 +219,7 @@ jobs:
         run: echo "dir=$(cd /home/runner/.composer && composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Composer cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-test-${{ matrix.php }}-${{ matrix.moodle-branch }}-${{ matrix.database }}-${{ hashFiles('**/composer.lock') }}
@@ -227,7 +227,7 @@ jobs:
             ${{ runner.os }}-composer-test-${{ matrix.php }}-${{ matrix.moodle-branch }}-${{ matrix.database }}-${{ hashFiles('**/composer.lock') }}
 
       - name: npm cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-test-${{ matrix.php }}-${{ matrix.moodle-branch }}-${{ matrix.database }}-${{ hashFiles('**/package-lock.json') }}
