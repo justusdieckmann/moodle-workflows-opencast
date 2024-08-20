@@ -202,7 +202,7 @@ jobs:
           path: opencast-docker
 
       - name: Start Opencast
-        run: docker-compose -p opencast-allinone -f opencast-docker/docker-compose/docker-compose.allinone.h2.yml up -d
+        run: docker compose -p opencast-allinone -f opencast-docker/docker-compose/docker-compose.allinone.h2.yml up -d
 
       - name: Check out repository code
         uses: actions/checkout@v3
