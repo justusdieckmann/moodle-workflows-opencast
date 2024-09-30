@@ -165,7 +165,7 @@ jobs:
         php: ['8.0', '8.1', '8.2', '8.3']
         moodle-branch: ['MOODLE_401_STABLE', 'MOODLE_402_STABLE', 'MOODLE_403_STABLE', 'MOODLE_404_STABLE']
         database: ['mariadb', 'pgsql']
-        opencast: ['13.5']
+        opencast: ['15.10']
         exclude:
           - php: '8.0'
             moodle-branch: 'MOODLE_404_STABLE'
